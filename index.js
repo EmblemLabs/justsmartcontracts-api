@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+const serverless = require('serverless-http');
 var app = require('./app');
 var debug = require('debug')('jsc-api:server');
 var http = require('http');
@@ -87,4 +87,8 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind)
+
+  
 }
+
+module.exports.handler = serverless(app);
